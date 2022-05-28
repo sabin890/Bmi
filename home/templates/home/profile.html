@@ -1,0 +1,28 @@
+{% extends 'home/home.html' %}
+{% block body %}
+{% if fm %}
+<div class="row">
+    <div>
+        {% include 'home/alert.html' %}
+    </div>
+    {% for fm in fm %}
+    <div class="col-sm-4 ">
+        <div style="background-color:black ; color: white; padding: 15px;" class="card-my-2 my-5">
+            <div class="card-footer">
+                <h6 class="text-center">{{fm.user.username}}</h6><hr>
+                <small>{{fm.result}}</small>
+                <small >{{fm.suggest}}</small><br>
+                <a class="btn btn-danger my-3" href="{% url 'delete' fm.id %}">Delete</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <h1 class="text-center my-5">No Data</h1>
+    {% endif %}
+    <div class="my-5 text-center">
+        <a class="btn btn-danger" href="{% url 'logout' %}">Log-Out</a>
+    </div>
+</div>
+
+{% endblock body %}

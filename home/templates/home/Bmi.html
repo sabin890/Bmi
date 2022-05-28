@@ -1,0 +1,53 @@
+{% extends 'home/home.html' %}
+{% block body %}
+<div class="my-5"  class="container">
+<div>
+    {% include 'home/alert.html' %}
+</div>
+    <form method="post">
+        {% csrf_token %}
+        {% if bm.non_field_errors %}
+        {% for error in errors %}
+        {{error}}
+        {% endfor %}
+        {% endif %}
+        {% for fm in bm %}
+        {{fm.label_tag}} {{fm}} {{fm.errors|striptags}}<br><br>
+        {% endfor %}
+        <div>
+            {% if result < 18.5 %} <div class=" text-white bg-info mb-5"
+                style="width: 100%; border: 1px solid black;">
+                <div class="card-body">
+                    <p class="card-text">{{fb}}</p>
+                </div>
+        </div>
+        {% elif result >= 18.5 and result <= 25 %} <div class="card text-white bg-success mb-3"
+            style="max-width: 100%;">
+            <div class="card-body">
+                <p class="card-text">{{fb}}</p>
+            </div>
+</div>
+{% elif result > 25 and result <= 29.9 %} <div class="card text-white bg-warning mb-3" style="max-width: 100%;">
+    <div class="card-body">
+        <p class="card-text">{{fb}}</p>
+    </div>
+    </div>
+    {% elif result >= 30 %}
+    <div class="card text-white bg-danger mb-3" style="max-width: 100%;">
+        <div class="card-body">
+            <p class="card-text">{{fb}}</p>
+        </div>
+    </div>
+    {% endif %}
+    </div>
+    {% if fb == NULL %}
+    <button class="btn btn-success" type="submit">Submit</button>
+    {% endif %}
+    {% if fb %}
+    <div class="text-center">
+        <a class="btn btn-info" href="{% url 'save' %}">Save</a>
+        <a class="btn btn-warning" href="{% url 'bmi' %}">Clear</a>
+    </div>
+    {% endif %}
+    </div>
+{% endblock body %}

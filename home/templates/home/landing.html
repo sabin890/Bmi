@@ -1,0 +1,31 @@
+{% extends 'home/home.html' %}
+{% block body %}
+<h1 class="text-center"><b>We</h1>
+    <h3 class="text-center"><b> Are here to provide you Bmi Calculator</b></h3>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+<div style="top: 1100px;">
+    <footer>
+      <div class="footer-content">
+        <h3>Bmi Calculation</h3>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit corrupti cumque non laudantium delectus quo
+          molestiae eius, maiores nam. Enim.</p>
+        <ul class="socials">
+          <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
+          <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+          <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+          <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+        </ul>
+      </div>
+      <div class="footer-bottom">
+        <p>compright &copy;2022 BMI-Calculator. designed by <span>Sabin</span></p>
+      </div>
+    </footer>
+  </div>
+  {% endblock body %}
