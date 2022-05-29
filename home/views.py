@@ -90,18 +90,20 @@ def log_in(request):
 
 
 def sv(request):
-    height = request.session["height"]
-    wieght = request.session["wieght"]
-    age = request.session["age"]
-    result = request.session["result"]
-    suggest = request.session["suggest"]
-    bmi_save = Bmi(hight=height, weight=wieght, age=age,
-                   result=result, suggest=suggest, user=request.user)
-    bmi_save.save()
-    messages.success(request, "You Data has been successfully saved!!")
-    return redirect("bmi")
-
-
+    if request.user.is_authenticated():
+        height = request.session["height"]
+        wieght = request.session["wieght"]
+        age = request.session["age"]
+        result = request.session["result"]
+        suggest = request.session["suggest"]
+        bmi_save = Bmi(hight=height, weight=wieght, age=age,
+                    result=result, suggest=suggest, user=request.user)
+        bmi_save.save()
+        messages.success(request, "You Data has been successfully saved!!")
+        return redirect("bmi")
+    else:
+        messages.error(request, "You need to log-in to save your data!!")
+        return redirect("bmi")
 def log_out(request):
     logout(request)
     return redirect("login")

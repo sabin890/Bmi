@@ -20,12 +20,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY =os.environ['secrate_key']
+SECRET_KEY ="django-insecure-3e%tgo94_)edsso(enz&q8ht5##r+x7ed6o#hqg*zah&68x4k%"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ["bmi-calculator121.herokuapp.com","localhost"]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
