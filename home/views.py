@@ -90,7 +90,7 @@ def log_in(request):
 
 
 def sv(request):
-    if not request.user.is_authenticated:
+    if  request.user.is_authenticated:
         height = request.session["height"]
         wieght = request.session["wieght"]
         age = request.session["age"]
